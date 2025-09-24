@@ -1,4 +1,5 @@
 # Cybersecurity-Elevate-Labs
+***TASK-1***
 **Objective**: Learn to discover open ports on devices in your local network to understand network exposure. 
 
 **Tools**: Nmap
@@ -26,3 +27,4 @@ Why “stealth”? It avoids completing the 3-way handshake, so it may leave les
 **Common additions**: -p to specify ports (e.g., -p1-65535), -sV for service/version detection, and -O for OS detection.
 
 **Ethics/legal**: Only scan hosts/networks you own or have permission to test.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
