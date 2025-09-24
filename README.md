@@ -43,53 +43,53 @@ Why “stealth”? It avoids completing the 3-way handshake, so it may leave les
 
 1. Collect Phishing Emails
 
-Obtain sample phishing emails from safe online sources or your email inbox (mark them as suspicious).
+-Obtain sample phishing emails from safe online sources or your email inbox (mark them as suspicious).
 
-Save them as .eml or copy raw text.
+-Save them as .eml or copy raw text.
 
 2. Extract Email Header
 
-Open the email in your client (Gmail, Outlook, Yahoo, etc.).
+-Open the email in your client (Gmail, Outlook, Yahoo, etc.).
 
-Locate “Show Original” / “View Source / Internet Headers”.
+-Locate “Show Original” / “View Source / Internet Headers”.
 
-Copy the full raw header for analysis.
+-Copy the full raw header for analysis.
 
 3. Analyse Header Using MXToolbox
 
-Go to MxToolbox Email Header Analyzer.
+-Go to MxToolbox Email Header Analyzer.
 
-Paste the raw header into the analyzer.
+-Paste the raw header into the analyzer.
 
-Review authentication results (SPF, DKIM, DMARC) and sender IP routing.
+-Review authentication results (SPF, DKIM, DMARC) and sender IP routing.
 
 4. Check Suspicious Links and Attachments
 
-Hover over links to reveal the real URLs (do not click).
+-Hover over links to reveal the real URLs (do not click).
 
-Note any mismatched domains or IP addresses.
+-Note any mismatched domains or IP addresses.
 
-Check attachment names for .exe, .zip, or unusual file types.
+-Check attachment names for .exe, .zip, or unusual file types.
 
 5. Review Email Content
 
-Look for urgent or threatening language.
+-Look for urgent or threatening language.
 
-Check grammar, spelling errors, and generic greetings.
+-Check grammar, spelling errors, and generic greetings.
 
-Identify signs of social engineering.
+-Identify signs of social engineering.
 
 6.Document Findings
 
-Record all suspicious indicators: spoofed sender, failed authentication, mismatched links, malicious attachments, urgency, spelling errors.
+-Record all suspicious indicators: spoofed sender, failed authentication, mismatched links, malicious attachments, urgency, spelling errors.
 
-Summarise phishing traits in a report for awareness or learning purposes.
+-Summarise phishing traits in a report for awareness or learning purposes.
 
 7. Optional (Safe Lab Analysis)
 
-Use VirusTotal or sandbox environments to inspect attachments.
+-Use VirusTotal or sandbox environments to inspect attachments.
 
-Use dig or whois for domain reputation checks.
+-Use dig or whois for domain reputation checks.
 
 ✅ Outcome:
 
