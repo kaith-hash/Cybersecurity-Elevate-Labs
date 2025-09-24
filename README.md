@@ -7,7 +7,7 @@
 
 So, my local Area Network consists of a 192.168.1.1/24 IP subnet.
 Firstly, I installed Nmap on my Windows 11 machine. You can either use Windows or Linux OS for scanning the port using Nmap, but using Linux is more reliable in the cybersecurity field.
-Using- nmap -sS 192.168.1.1/24, I performed a TCP SYN scan.
+Using- nmap -sS 192.168.1.1/24, I performed a TCP SYN scan, which means “half-open” or stealth scan.
 
 **What it does**: Sends TCP SYN packets to target ports and inspects replies.
 
