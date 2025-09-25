@@ -1,31 +1,113 @@
 # Cybersecurity-Elevate-Labs
-##TASK 1:Learn to discover open ports on devices in your local network to understand network exposure. 
+🔍 Task 1: Discovering Open Ports in the Local Network
+This task focuses on performing basic network reconnaissance to discover open ports on devices within the local network. This is a fundamental step in understanding the network's exposure and potential security risks.
 
-**Tools**: Nmap
+Objective
+Use 
 
-**Key Concepts**: Port scanning, TCP SYN scan, IP ranges, network reconnaissance, open ports, network security basics
+Nmap to perform a port scan on devices in the local network.
 
-So, my local Area Network consists of a 192.168.1.1/24 IP subnet.
-Firstly, I installed Nmap on my Windows 11 machine. You can either use Windows or Linux OS for scanning the port using Nmap, but using Linux is more reliable in the cybersecurity field.
-Using- nmap -sS 192.168.1.1/24, I performed a TCP SYN scan, which means “half-open” or stealth scan.
+Understand key concepts like TCP SYN scanning, IP ranges, and open port significance.
 
-**What it does**: Sends TCP SYN packets to target ports and inspects replies.
+Tools Used
 
-SYN + SYN/ACK → port open (scanner usually sends a RST to avoid completing the handshake).
+Nmap (Network Mapper) 
 
-SYN + RST → port closed.
 
-No reply or ICMP unreachable → port filtered (firewall or drop).
+Operating System: Windows 11 (or Linux for better reliability in cybersecurity) 
 
-Why “stealth”? It avoids completing the 3-way handshake, so it may leave less of a connection trace than a full connect scan.
 
-**Privileges**: Requires raw packet privileges (usually run as root/Administrator).
+Target Network: 192.168.1.1/24 IP subnet 
 
-**Speed & stealth tradeoff**: Faster and often quieter than a full TCP connect (-sT), but still detectable by modern IDS/host logs.
+Key Concepts
+Concept	Description
+Port Scanning	
+The process of sending requests to a range of ports on a target device to determine which ports are open and active.
 
-**Common additions**: -p to specify ports (e.g., -p1-65535), -sV for service/version detection, and -O for OS detection.
+IP Ranges	
+A set of IP addresses, often denoted using 
 
-**Ethics/legal**: Only scan hosts/networks you own or have permission to test.
+CIDR notation (e.g., 192.168.1.1/24), which specifies all devices within a particular subnet.
+
+Open Ports	
+Ports on a host that are accepting connections, often indicating a running service (e.g., web server, SSH, FTP).
+
+Network Exposure	
+The measure of what services or entry points an attacker can see and potentially interact with on a network.
+
+Ethics/Legal	
+Only scan hosts/networks you own or have explicit permission to test.
+
+
+Export to Sheets
+Step-by-Step Implementation
+1. Nmap Installation
+
+Install Nmap on the chosen machine (Windows or Linux).
+
+
+(Note: While Windows 11 was used, Linux is considered more reliable for cybersecurity tasks).
+
+2. Performing the TCP SYN Scan
+The core of this task involves executing a TCP SYN Scan (-sS) against the entire local subnet.
+
+Step	Command/Action	Description
+2.1	
+Open the terminal or command prompt (with Administrator/root privileges).
+
+The scan requires 
+
+raw packet privileges to function correctly.
+
+2.2	
+Execute the scan command: 
+
+nmap -sS 192.168.1.1/24.
+
+This initiates a 
+
+stealth scan across all 254 possible host IPs in the 192.168.1.1/24 subnet.
+
+
+Export to Sheets
+3. Understanding the TCP SYN Scan (-sS)
+The TCP SYN scan is a 
+
+"half-open" or stealth scan because it avoids completing the standard TCP 3-way handshake.
+
+How it Works (Packet Inspection)
+The scan sends a 
+
+TCP SYN packet (Synchronization) to the target ports and interprets the reply:
+
+Port Open: The target sends a SYN/ACK (Synchronization-Acknowledgement). The scanner then typically sends an 
+
+RST (Reset) to immediately close the connection, thus avoiding a full handshake.
+
+
+Port Closed: The target sends an RST (Reset) packet.
+
+
+Port Filtered: There is No reply or an ICMP unreachable message is received, often indicating a firewall or a packet-dropping rule is in place.
+
+Stealth and Trade-offs
+
+Why Stealth? By avoiding the final ACK packet, it leaves fewer connection traces than a full TCP connect scan (-sT), making it harder to log by host-based tools.
+
+
+Trade-off: While generally faster and quieter than a connect scan, it is still detectable by modern Intrusion Detection Systems (IDS) and network monitoring tools.
+
+4. Common Scan Additions
+While the basic scan is useful, Nmap offers parameters to enrich the findings:
+
+
+-p: Specify ports to scan (e.g., -p1-65535 for all ports).
+
+
+-sV: Attempt to detect the service and version running on open ports.
+
+
+-O: Attempt to perform OS detection to identify the target's operating system.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
