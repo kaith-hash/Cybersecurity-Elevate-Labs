@@ -70,68 +70,38 @@ While the basic scan is useful, Nmap offers parameters to enrich the findings:
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-***TASK-2***
-
-**Objective**: Identify phishing characteristics in a suspicious email sample. 
-
-**Tools**: Email client or saved email file (text), free online header analyzer. 
-
-**Deliverables**: A report listing phishing indicators found
-
-**Key Concepts**: Phishing, email spoofing, header analysis, social engineering, threat detection
-
-1. Collect Phishing Emails
-
+same for:
+TASK-2
+Objective: Identify phishing characteristics in a suspicious email sample.
+Tools: Email client or saved email file (text), free online header analyzer.
+Deliverables: A report listing phishing indicators found
+Key Concepts: Phishing, email spoofing, header analysis, social engineering, threat detection
+Collect Phishing Emails
 -Obtain sample phishing emails from safe online sources or your email inbox (mark them as suspicious).
-
 -Save them as .eml or copy raw text.
-
-2. Extract Email Header
-
+Extract Email Header
 -Open the email in your client (Gmail, Outlook, Yahoo, etc.).
-
 -Locate “Show Original” / “View Source / Internet Headers”.
-
 -Copy the full raw header for analysis.
-
-3. Analyse Header Using MXToolbox
-
+Analyse Header Using MXToolbox
 -Go to MxToolbox Email Header Analyzer.
-
 -Paste the raw header into the analyzer.
-
 -Review authentication results (SPF, DKIM, DMARC) and sender IP routing.
-
-4. Check Suspicious Links and Attachments
-
+Check Suspicious Links and Attachments
 -Hover over links to reveal the real URLs (do not click).
-
 -Note any mismatched domains or IP addresses.
-
 -Check attachment names for .exe, .zip, or unusual file types.
-
-5. Review Email Content
-
+Review Email Content
 -Look for urgent or threatening language.
-
 -Check grammar, spelling errors, and generic greetings.
-
 -Identify signs of social engineering.
-
 6.Document Findings
-
 -Record all suspicious indicators: spoofed sender, failed authentication, mismatched links, malicious attachments, urgency, spelling errors.
-
 -Summarise phishing traits in a report for awareness or learning purposes.
-
-7. Optional (Safe Lab Analysis)
-
+Optional (Safe Lab Analysis)
 -Use VirusTotal or sandbox environments to inspect attachments.
-
 -Use dig or whois for domain reputation checks.
-
 ✅ Outcome:
-
 Learn to identify phishing tactics and analyze email threats systematically.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
