@@ -70,39 +70,88 @@ While the basic scan is useful, Nmap offers parameters to enrich the findings:
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-same for:
-TASK-2
-Objective: Identify phishing characteristics in a suspicious email sample.
-Tools: Email client or saved email file (text), free online header analyzer.
-Deliverables: A report listing phishing indicators found
-Key Concepts: Phishing, email spoofing, header analysis, social engineering, threat detection
-Collect Phishing Emails
--Obtain sample phishing emails from safe online sources or your email inbox (mark them as suspicious).
--Save them as .eml or copy raw text.
-Extract Email Header
--Open the email in your client (Gmail, Outlook, Yahoo, etc.).
--Locate “Show Original” / “View Source / Internet Headers”.
--Copy the full raw header for analysis.
-Analyse Header Using MXToolbox
--Go to MxToolbox Email Header Analyzer.
--Paste the raw header into the analyzer.
--Review authentication results (SPF, DKIM, DMARC) and sender IP routing.
-Check Suspicious Links and Attachments
--Hover over links to reveal the real URLs (do not click).
--Note any mismatched domains or IP addresses.
--Check attachment names for .exe, .zip, or unusual file types.
-Review Email Content
--Look for urgent or threatening language.
--Check grammar, spelling errors, and generic greetings.
--Identify signs of social engineering.
-6.Document Findings
--Record all suspicious indicators: spoofed sender, failed authentication, mismatched links, malicious attachments, urgency, spelling errors.
--Summarise phishing traits in a report for awareness or learning purposes.
-Optional (Safe Lab Analysis)
--Use VirusTotal or sandbox environments to inspect attachments.
--Use dig or whois for domain reputation checks.
-✅ Outcome:
-Learn to identify phishing tactics and analyze email threats systematically.
+## Task 2: Analyzing a Phishing Email Sample
+
+This task details the systematic analysis of a suspicious email to expose its **phishing characteristics** using header analysis and content review.
+
+### **Objective**
+
+  * [cite\_start]Identify phishing characteristics in a suspicious email sample[cite: 57].
+  * [cite\_start]Utilize an email client and a free online header analyzer[cite: 58].
+  * Learn to systematically identify phishing tactics and analyze email threats.
+
+### **Tools Used**
+
+  * [cite\_start]**Email Client** or saved email file (text) [cite: 58]
+  * [cite\_start]**Free Online Header Analyzer** (e.g., MXToolbox) [cite: 58]
+
+### **Key Concepts**
+
+| Concept | Description |
+| :--- | :--- |
+| **Phishing** | [cite\_start]Fraudulently acquiring sensitive data by disguising communication as trustworthy[cite: 60]. |
+| **Email Spoofing** | [cite\_start]Forging the sender's address, often using **lookalike domains** (e.g., `bannk` instead of `bank`)[cite: 60, 64]. |
+| **Header Analysis** | [cite\_start]Examining the raw headers to check authentication (SPF, DKIM, DMARC) and the true sending IP[cite: 60, 68]. |
+| **Social Engineering** | [cite\_start]Psychological manipulation using **urgency** or **threats** to induce immediate action[cite: 60, 104]. |
+| **Threat Detection** | [cite\_start]Identifying indicators like failed authentication, mismatched URLs, and malicious attachments[cite: 60, 114, 116, 118]. |
+
+-----
+
+## **Step-by-Step Implementation**
+
+### **1. Collect Sample and Extract Header**
+
+1.  [cite\_start]**Obtain a sample** phishing email (e.g., from safe online sources or an inbox marked suspicious)[cite: 56].
+2.  [cite\_start]**Save** the email as `.eml` or copy the raw text[cite: 58].
+3.  [cite\_start]**Extract the Header:** Open the email and locate the **“Show Original”** or **“View Source / Internet Headers”** option[cite: 65].
+4.  **Copy** the full raw header for analysis.
+
+### **2. Analyze Header for Authentication and Origin**
+
+[cite\_start]The raw header is pasted into a tool like the MXToolbox Email Header Analyzer[cite: 86].
+
+| Analysis Point | Finding | Indicator |
+| :--- | :--- | :--- |
+| **Sender Domain** | [cite\_start]Claimed: `support@mysecurebank.com` [cite: 62] [cite\_start]<br> Actual: `support@mysecurebannk.co` [cite: 63] | [cite\_start]**Spoofed/Lookalike Domain**[cite: 64]. |
+| **Sender IP** | [cite\_start]`185.203.118.45` (associated with `mail.fakehost.ru`) [cite: 70, 87] | [cite\_start]**Origin IP not belonging to the legitimate bank** (foreign host/generic mail provider)[cite: 67, 87]. |
+| **SPF** | [cite\_start]`spf=fail` [cite: 73, 88] | [cite\_start]**Failed authentication**—sending IP is **not authorized** by the domain’s SPF record (spoofing likely)[cite: 68, 88]. |
+| **DKIM** | [cite\_start]`dkim=fail` (no signature) [cite: 76, 89] | [cite\_start]**Failed authenticity**—message lacks a valid DKIM signature from the claimed domain[cite: 68, 89]. |
+| **DMARC** | [cite\_start]`dmarc=fail` (p=none) [cite: 77, 90] | [cite\_start]**DMARC not passing**—strong indicator of a forged email[cite: 68, 91]. |
+
+### **3. Check Suspicious Links and Attachments**
+
+1.  **Check Suspicious Links:**
+      * [cite\_start]**Visible Link Text:** `https://mysecurebank.com/login`[cite: 93].
+      * [cite\_start]**Actual Target Link (simulated):** `http://185.203.118.45/login.php` or `http://malicious-site.co/secure/login`[cite: 94].
+      * [cite\_start]**Finding:** **Mismatched URL**—the displayed link differs from the real target, a classic redirect for credential harvesting[cite: 95, 116]. **Do not click** the link.
+2.  **Check Attachments:**
+      * [cite\_start]**Attachment Name:** `Invoice_Sept2025.zip`[cite: 97].
+      * [cite\_start]**Inside (simulated):** `Invoice_Sept2025.exe`[cite: 98].
+      * [cite\_start]**Finding:** Attachments with **double extensions or executables inside compressed files (.zip)** are common malware delivery vectors[cite: 99, 118]. [cite\_start]**Do not open** attachments[cite: 100].
+
+### **4. Review Email Content for Social Engineering**
+
+1.  **Subject Line and Tone:**
+      * [cite\_start]**Subject:** `URGENT: Verify Your Account Now or It Will Be Blocked`[cite: 83, 102].
+      * [cite\_start]**Tone:** **Threatening and time-limited** ("You have 24 hours to verify or your account will be suspended")[cite: 103].
+      * [cite\_start]**Reason:** Phishers use **fear/urgency** to bypass rational checks and induce immediate clicks[cite: 104, 117].
+2.  **Language and Greeting:**
+      * [cite\_start]**Simulated Errors:** Spelling/grammar errors like "You musted verify your account immediatly" or "Please click here to secure youre account"[cite: 106].
+      * [cite\_start]**Greeting:** **Generic greeting** ("Dear Customer") instead of the recipient's name[cite: 110].
+      * [cite\_start]**Reason:** Legitimate institutional emails rarely contain such errors; poor language is a phishing hallmark[cite: 107, 119].
+
+### **5. Summary of Phishing Traits Found (Deliverables)**
+
+[cite\_start]The following indicators confirm the email is a phishing attempt[cite: 59, 112]:
+
+  * [cite\_start]**Spoofed/Lookalike Sender Domain** (`mysecurebannk.co`)[cite: 113].
+  * [cite\_start]**Failed Email Authentication** (SPF=fail, DKIM=fail, DMARC=fail)[cite: 114].
+  * [cite\_start]**Non-Legitimate Sender IP** (`185.203.118.45`)[cite: 115].
+  * [cite\_start]**Mismatched Display URL vs Actual Href** (link leads to an IP/malicious domain)[cite: 116].
+  * [cite\_start]**Threatening, Urgent Language** to force immediate action[cite: 117].
+  * [cite\_start]**Suspicious Attachment** with an executable inside a ZIP[cite: 99, 118].
+  * [cite\_start]**Poor Language/Generic Greeting**[cite: 119].
+  * [cite\_start]**Inconsistent Branding** or unusual reply-to address mismatch[cite: 120, 111, 109].
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
