@@ -1,7 +1,5 @@
 # Cybersecurity-Elevate-Labs
-***TASK-1***
-
-**Objective**: Learn to discover open ports on devices in your local network to understand network exposure. 
+##TASK 1:Learn to discover open ports on devices in your local network to understand network exposure. 
 
 **Tools**: Nmap
 
@@ -97,11 +95,7 @@ Learn to identify phishing tactics and analyze email threats systematically.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-That sounds like a great virtual internship task! Based on the provided document, here is a step-by-step implementation guide for your GitHub repository's README file, detailing how to perform a basic vulnerability scan using OpenVAS (GVM).
-
----
-
-## 💻 Task 3: Performing a Basic Vulnerability Scan on a PC
+## Task 3: Performing a Basic Vulnerability Scan on a PC
 
 This task involves using a free vulnerability scanner, **OpenVAS (Greenbone Vulnerability Manager - GVM)**, to identify common security risks on a personal computer.
 
