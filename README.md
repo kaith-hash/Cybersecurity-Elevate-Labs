@@ -13,17 +13,17 @@ This task focuses on performing basic **network reconnaissance** to discover **o
 
 * **Nmap** (Network Mapper) 
 * **Operating System:** Windows 11 (or Linux for better reliability in cybersecurity) 
-* **Target Network:** 192.168.1.1/24 IP subnet 
+* **Target Network:** 192.168.1.124 IP subnet 
 
 ### **Key Concepts**
 
 | Concept | Description |
 | :--- | :--- |
 | **Port Scanning** | The process of sending requests to a range of ports on a target device to determine which ports are open and active. |
-| **IP Ranges** | A set of IP addresses, often denoted using **CIDR notation** (e.g., `192.168.1.1/24`), which specifies all devices within a particular subnet. |
+| **IP Ranges** | A set of IP addresses, often denoted using **CIDR notation** (e.g., `192.168.1.124`), which specifies all devices within a particular subnet. |
 | **Open Ports** | Ports on a host that are accepting connections, often indicating a running service (e.g., web server, SSH, FTP). |
 | **Network Exposure** | The measure of what services or entry points an attacker can see and potentially interact with on a network. |
-| **Ethics/Legal** | Only scan hosts/networks you own or have explicit permission to test. |
+| **EthicsLegal** | Only scan hostsnetworks you own or have explicit permission to test. |
 
 ***
 
@@ -38,10 +38,10 @@ This task focuses on performing basic **network reconnaissance** to discover **o
 
 The core of this task involves executing a **TCP SYN Scan (`-sS`)** against the entire local subnet.
 
-| Step | Command/Action | Description |
+| Step | CommandAction | Description |
 | :--- | :--- | :--- |
-| **2.1** | Open the terminal or command prompt (with Administrator/root privileges). | The scan requires **raw packet privileges** to function correctly. |
-| **2.2** | Execute the scan command: `nmap -sS 192.168.1.1/24`. | This initiates a **stealth scan** across all 254 possible host IPs in the `192.168.1.1/24` subnet. |
+| **2.1** | Open the terminal or command prompt (with Administratorroot privileges). | The scan requires **raw packet privileges** to function correctly. |
+| **2.2** | Execute the scan command: `nmap -sS 192.168.1.124`. | This initiates a **stealth scan** across all 254 possible host IPs in the `192.168.1.124` subnet. |
 
 ### **3. Understanding the TCP SYN Scan (`-sS`)**
 
@@ -51,7 +51,7 @@ The TCP SYN scan is a **"half-open"** or **stealth scan** because it avoids comp
 
 The scan sends a **TCP SYN packet** (Synchronization) to the target ports and interprets the reply:
 
-* **Port Open:** The target sends a **SYN/ACK** (Synchronization-Acknowledgement). The scanner then typically sends an **RST** (Reset) to immediately close the connection, thus avoiding a full handshake.
+* **Port Open:** The target sends a **SYNACK** (Synchronization-Acknowledgement). The scanner then typically sends an **RST** (Reset) to immediately close the connection, thus avoiding a full handshake.
 * **Port Closed:** The target sends an **RST** (Reset) packet.
 * **Port Filtered:** There is **No reply** or an **ICMP unreachable** message is received, often indicating a firewall or a packet-dropping rule is in place.
 
@@ -103,7 +103,7 @@ This task details the systematic analysis of a suspicious email to expose its **
 
 1.  **Obtain a sample** phishing email (e.g., from safe online sources or an inbox marked suspicious)[cite: 56].
 2.  **Save** the email as `.eml` or copy the raw text[cite: 58].
-3.  **Extract the Header:** Open the email and locate the **“Show Original”** or **“View Source / Internet Headers”** option[cite: 65].
+3.  **Extract the Header:** Open the email and locate the **“Show Original”** or **“View Source  Internet Headers”** option[cite: 65].
 4.  **Copy** the full raw header for analysis.
 
 ### **2. Analyze Header for Authentication and Origin**
@@ -112,8 +112,8 @@ The raw header is pasted into a tool like the MXToolbox Email Header Analyzer[ci
 
 | Analysis Point | Finding | Indicator |
 | :--- | :--- | :--- |
-| **Sender Domain** | Claimed: `support@mysecurebank.com`  <br> Actual: `support@mysecurebannk.co` [cite: 63] | **Spoofed/Lookalike Domain**[cite: 64]. |
-| **Sender IP** | `185.203.118.45` (associated with `mail.fakehost.ru`) [cite: 70, 87] | **Origin IP not belonging to the legitimate bank** (foreign host/generic mail provider)[cite: 67, 87]. |
+| **Sender Domain** | Claimed: `support@mysecurebank.com`  <br> Actual: `support@mysecurebannk.co` [cite: 63] | **SpoofedLookalike Domain**[cite: 64]. |
+| **Sender IP** | `185.203.118.45` (associated with `mail.fakehost.ru`) [cite: 70, 87] | **Origin IP not belonging to the legitimate bank** (foreign hostgeneric mail provider)[cite: 67, 87]. |
 | **SPF** | `spf=fail` [cite: 73, 88] | **Failed authentication**—sending IP is **not authorized** by the domain’s SPF record (spoofing likely)[cite: 68, 88]. |
 | **DKIM** | `dkim=fail` (no signature) [cite: 76, 89] | **Failed authenticity**—message lacks a valid DKIM signature from the claimed domain[cite: 68, 89]. |
 | **DMARC** | `dmarc=fail` (p=none) [cite: 77, 90] | **DMARC not passing**—strong indicator of a forged email[cite: 68, 91]. |
@@ -121,8 +121,8 @@ The raw header is pasted into a tool like the MXToolbox Email Header Analyzer[ci
 ### **3. Check Suspicious Links and Attachments**
 
 1.  **Check Suspicious Links:**
-      * **Visible Link Text:** `https://mysecurebank.com/login`[cite: 93].
-      * **Actual Target Link (simulated):** `http://185.203.118.45/login.php` or `http://malicious-site.co/secure/login`[cite: 94].
+      * **Visible Link Text:** `https:mysecurebank.comlogin`[cite: 93].
+      * **Actual Target Link (simulated):** `http:185.203.118.45login.php` or `http:malicious-site.cosecurelogin`[cite: 94].
       * **Finding:** **Mismatched URL**—the displayed link differs from the real target, a classic redirect for credential harvesting[cite: 95, 116]. **Do not click** the link.
 2.  **Check Attachments:**
       * **Attachment Name:** `Invoice_Sept2025.zip`[cite: 97].
@@ -134,9 +134,9 @@ The raw header is pasted into a tool like the MXToolbox Email Header Analyzer[ci
 1.  **Subject Line and Tone:**
       * **Subject:** `URGENT: Verify Your Account Now or It Will Be Blocked`[cite: 83, 102].
       * **Tone:** **Threatening and time-limited** ("You have 24 hours to verify or your account will be suspended")[cite: 103].
-      * **Reason:** Phishers use **fear/urgency** to bypass rational checks and induce immediate clicks[cite: 104, 117].
+      * **Reason:** Phishers use **fearurgency** to bypass rational checks and induce immediate clicks[cite: 104, 117].
 2.  **Language and Greeting:**
-      * **Simulated Errors:** Spelling/grammar errors like "You musted verify your account immediatly" or "Please click here to secure youre account"[cite: 106].
+      * **Simulated Errors:** Spellinggrammar errors like "You musted verify your account immediatly" or "Please click here to secure youre account"[cite: 106].
       * **Greeting:** **Generic greeting** ("Dear Customer") instead of the recipient's name[cite: 110].
       * **Reason:** Legitimate institutional emails rarely contain such errors; poor language is a phishing hallmark[cite: 107, 119].
 
@@ -144,13 +144,13 @@ The raw header is pasted into a tool like the MXToolbox Email Header Analyzer[ci
 
 The following indicators confirm the email is a phishing attempt[cite: 59, 112]:
 
-  * **Spoofed/Lookalike Sender Domain** (`mysecurebannk.co`)[cite: 113].
+  * **SpoofedLookalike Sender Domain** (`mysecurebannk.co`)[cite: 113].
   * **Failed Email Authentication** (SPF=fail, DKIM=fail, DMARC=fail)[cite: 114].
   * **Non-Legitimate Sender IP** (`185.203.118.45`)[cite: 115].
-  * **Mismatched Display URL vs Actual Href** (link leads to an IP/malicious domain)[cite: 116].
+  * **Mismatched Display URL vs Actual Href** (link leads to an IPmalicious domain)[cite: 116].
   * **Threatening, Urgent Language** to force immediate action[cite: 117].
   * **Suspicious Attachment** with an executable inside a ZIP[cite: 99, 118].
-  * **Poor Language/Generic Greeting**[cite: 119].
+  * **Poor LanguageGeneric Greeting**[cite: 119].
   * **Inconsistent Branding** or unusual reply-to address mismatch[cite: 120, 111, 109].
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -181,11 +181,11 @@ This task involves using a free vulnerability scanner, **OpenVAS (Greenbone Vuln
 
 The first step is to install and set up the Greenbone Vulnerability Management (GVM) framework, which includes OpenVAS.
 
-| Step | Command/Action | Description |
+| Step | CommandAction | Description |
 | :--- | :--- | :--- |
 | **1.1** | `sudo apt install openvas` | Install the OpenVAS package and its dependencies on Kali Linux[cite: 6]. |
 | **1.2** | `sudo gvm-setup` | Run the setup script to configure the Greenbone Vulnerability Manager (GVM)[cite: 7]. This may take a significant amount of time as it downloads and processes all necessary vulnerability data (NVTs). |
-| **1.3** | `sudo gvm-check-setup` | Verify that the GVM/OpenVAS installation and setup were successful[cite: 8]. |
+| **1.3** | `sudo gvm-check-setup` | Verify that the GVMOpenVAS installation and setup were successful[cite: 8]. |
 
 ---
 
@@ -193,7 +193,7 @@ The first step is to install and set up the Greenbone Vulnerability Management (
 
 Once the setup is complete, the OpenVAS web interface, known as the Greenbone Security Assistant (GSA), will be ready.
 
-1.  **Navigate** to the following address in your web browser: `https://127.0.0.1` (or the local IP of your Kali machine)[cite: 10].
+1.  **Navigate** to the following address in your web browser: `https:127.0.0.1` (or the local IP of your Kali machine)[cite: 10].
 2.  **Log in** using the default credentials[cite: 11]:
     * **Username:** `admin` [cite: 12]
     * **Password:** `admin` [cite: 13]
@@ -220,11 +220,11 @@ After the scan is complete, the results can be analyzed in the reports section.
 
 #### **Initial Localhost Scan Findings**
 
-A successful initial scan against the localhost (`127.0.0.1`) should typically show vulnerabilities related to OpenVAS/GVM itself, which is normal for a default installation[cite: 21, 22].
+A successful initial scan against the localhost (`127.0.0.1`) should typically show vulnerabilities related to OpenVASGVM itself, which is normal for a default installation[cite: 21, 22].
 
 * **Example Findings:**
-    * **OpenVAS / Greenbone Vulnerability Manager Default Credentials** (Severity: High, 10.0) [cite: 20]
-    * **SSL/TLS: Certificate Expired** (Severity: Medium, 5.0) [cite: 20]
+    * **OpenVAS  Greenbone Vulnerability Manager Default Credentials** (Severity: High, 10.0) [cite: 20]
+    * **SSLTLS: Certificate Expired** (Severity: Medium, 5.0) [cite: 20]
 
 #### **Host Scan Summary (Example: 192.168.1.98)**
 
@@ -257,7 +257,7 @@ The final step is to analyze a specific vulnerability reported by OpenVAS and do
 | **Summary** | The OS has reached EOL, meaning it no longer receives security updates, patches, or vendor support[cite: 38, 39]. Using EOL software exposes the system to known and unknown vulnerabilities[cite: 40]. |
 | **Detection Method** | OS End of Life Detection (OID: 1.3.6.1.4.1.25623.1.0.103674) [cite: 52, 53] |
 
-#### **Solution / Mitigation** [cite: 45, 50]
+#### **Solution  Mitigation** [cite: 45, 50]
 
 The primary solution for an End-of-Life operating system is to upgrade to a supported version.
 
