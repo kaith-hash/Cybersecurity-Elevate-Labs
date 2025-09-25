@@ -2,7 +2,7 @@
 
 ## Task 1: Discovering Open Ports in the Local Network
 
-This task focuses on performing basic **network reconnaissance** to discover **open ports** on devices within the local network. [cite_start]This is a fundamental step in understanding the network's exposure and potential security risks[cite: 1].
+This task focuses on performing basic **network reconnaissance** to discover **open ports** on devices within the local network.This is a fundamental step in understanding the network's exposure and potential security risks.
 
 ### **Objective**
 
