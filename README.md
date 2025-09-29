@@ -266,3 +266,71 @@ The primary solution for an End-of-Life operating system is to upgrade to a supp
     * Backup critical data before starting the upgrade process.
     * Test critical applications on the new OS version for compatibility[cite: 48].
     * Apply the latest patches and security updates immediately after the OS upgrade[cite: 49].
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+## Task 4: Setup and Use a Firewall on Windows/Linux
+
+This task demonstrates the setup and testing of basic firewall rules to control network traffic, a critical aspect of host security.
+
+### **Objective**
+
+  * Configure and test basic firewall rules to allow or block network traffic.
+  * Understand the function of inbound and outbound rules.
+
+### **Tools Used**
+
+  * [cite\_start]**Windows Defender Firewall with Advanced Security** (on Windows) [cite: 123, 125]
+  * [cite\_start]**Telnet Client** (for testing) [cite: 131]
+  * [cite\_start]**Operating System:** Windows [cite: 121]
+  * [cite\_start]*Alternate Tool:* UFW (Uncomplicated Firewall) on Linux [cite: 123]
+
+### **Key Concepts**
+
+| Concept | Description |
+| :--- | :--- |
+| **Inbound Rules** | [cite\_start]Control traffic entering the system (e.g., blocking Telnet on port 23). [cite: 136] |
+| **Outbound Rules** | [cite\_start]Control traffic leaving the system (e.g., preventing an application from accessing the internet). [cite: 137] |
+| **Firewall Filtering** | [cite\_start]The process of allowing or blocking traffic based on defined rules using parameters like port numbers, protocols (TCP/UDP), IP addresses, or applications. [cite: 135, 138] |
+
+-----
+
+## **Step-by-Step Implementation**
+
+### **1. Accessing Windows Defender Firewall**
+
+1.  **Open** the Windows Defender Firewall interface. [cite\_start]The overview shows the firewall state (e.g., On) and connection settings for Private and Public networks. [cite: 124]
+2.  [cite\_start]**Navigate** to **Windows Defender Firewall with Advanced Security** to view the **Inbound** and **Outbound Rules**. [cite: 125] [cite\_start]This is where rules for traffic entering (Inbound) and leaving (Outbound) the system are managed. [cite: 126, 127]
+
+### **2. Adding a Rule to Block Inbound Traffic**
+
+The objective is to create a new **Inbound Rule** to block all incoming traffic on a specific port (Port 23, typically used by the Telnet protocol).
+
+| Step | Action/Configuration | Detail |
+| :--- | :--- | :--- |
+| **2.1 Rule Type** | [cite\_start]Select **Port**. [cite: 128] | The rule will control connections for a TCP or UDP port. |
+| **2.2 Protocol and Ports** | Select **TCP** and choose **Specific local ports**. [cite\_start]Enter `23`. [cite: 128] | Port 23 is the standard port for the Telnet service. |
+| **2.3 Action** | [cite\_start]Select **Block the connection**. [cite: 128] | This specifies the firewall's action when traffic matches the rule. |
+| **2.4 Profile** | [cite\_start]Select **Domain**, **Private**, and **Public** profiles. [cite: 128] | This ensures the rule applies regardless of the network environment (e.g., home, corporate, public Wi-Fi). |
+| **2.5 Name** | [cite\_start]Assign a descriptive name, such as **`Block_Telnet_23`**. [cite: 128] | [cite\_start]The new rule is now active in the Inbound Rules list. [cite: 128] |
+
+### **3. Testing the Firewall Rule**
+
+The rule is tested by attempting to connect to the blocked port (Port 23) using the Telnet client.
+
+1.  [cite\_start]**Enable Telnet Client** (if not already installed): Navigate to **Control Panel** → **Programs** → **Turn Windows features on or off**, and enable **Telnet Client**. [cite: 131]
+2.  **Run the Test Command** from the Command Prompt:
+    ```bash
+    telnet [host ip] 23
+    ```
+    [cite\_start]*Example:* `telnet 192.168.1.39 23` [cite: 132]
+3.  [cite\_start]**Observation:** The connection attempt fails with a **"Connect failed"** message. [cite: 132] [cite\_start]This confirms the new firewall rule successfully intercepted and blocked the inbound connection attempt to Port 23. [cite: 132]
+
+### **4. Summary of Firewall Functionality**
+
+[cite\_start]A firewall acts as a security guard for the computer, determining whether to **allow or block traffic** based on defined rules. [cite: 134, 135]
+
+  * [cite\_start]**Rule Mechanism:** Rules are based on parameters like port numbers, protocols (TCP/UDP), IP addresses, or applications. [cite: 138]
+  * **Action:** If traffic matches a **Block** rule, the traffic is dropped. [cite\_start]If the traffic is **allowed**, it passes. [cite: 140, 141]
+  * [cite\_start]**Test Outcome:** Blocking port **23** stopped Telnet connections, proving the firewall filters unwanted access while allowing other safe traffic. [cite: 142]
