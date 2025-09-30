@@ -281,18 +281,18 @@ This task demonstrates the setup and testing of basic firewall rules to control 
 
 ### **Tools Used**
 
-  * [cite\_start]**Windows Defender Firewall with Advanced Security** (on Windows) [cite: 123, 125]
-  * [cite\_start]**Telnet Client** (for testing) [cite: 131]
-  * [cite\_start]**Operating System:** Windows [cite: 121]
-  * [cite\_start]*Alternate Tool:* UFW (Uncomplicated Firewall) on Linux [cite: 123]
+  * **Windows Defender Firewall with Advanced Security** (on Windows) [cite: 123, 125]
+  * **Telnet Client** (for testing) [cite: 131]
+  * **Operating System:** Windows [cite: 121]
+  * *Alternate Tool:* UFW (Uncomplicated Firewall) on Linux [cite: 123]
 
 ### **Key Concepts**
 
 | Concept | Description |
 | :--- | :--- |
-| **Inbound Rules** | [cite\_start]Control traffic entering the system (e.g., blocking Telnet on port 23). [cite: 136] |
-| **Outbound Rules** | [cite\_start]Control traffic leaving the system (e.g., preventing an application from accessing the internet). [cite: 137] |
-| **Firewall Filtering** | [cite\_start]The process of allowing or blocking traffic based on defined rules using parameters like port numbers, protocols (TCP/UDP), IP addresses, or applications. [cite: 135, 138] |
+| **Inbound Rules** | Control traffic entering the system (e.g., blocking Telnet on port 23). [cite: 136] |
+| **Outbound Rules** | Control traffic leaving the system (e.g., preventing an application from accessing the internet). [cite: 137] |
+| **Firewall Filtering** | The process of allowing or blocking traffic based on defined rules using parameters like port numbers, protocols (TCP/UDP), IP addresses, or applications. [cite: 135, 138] |
 
 -----
 
@@ -300,8 +300,8 @@ This task demonstrates the setup and testing of basic firewall rules to control 
 
 ### **1. Accessing Windows Defender Firewall**
 
-1.  **Open** the Windows Defender Firewall interface. [cite\_start]The overview shows the firewall state (e.g., On) and connection settings for Private and Public networks. [cite: 124]
-2.  [cite\_start]**Navigate** to **Windows Defender Firewall with Advanced Security** to view the **Inbound** and **Outbound Rules**. [cite: 125] [cite\_start]This is where rules for traffic entering (Inbound) and leaving (Outbound) the system are managed. [cite: 126, 127]
+1.  **Open** the Windows Defender Firewall interface. The overview shows the firewall state (e.g., On) and connection settings for Private and Public networks. [cite: 124]
+2.  **Navigate** to **Windows Defender Firewall with Advanced Security** to view the **Inbound** and **Outbound Rules**. [cite: 125] This is where rules for traffic entering (Inbound) and leaving (Outbound) the system are managed. [cite: 126, 127]
 
 ### **2. Adding a Rule to Block Inbound Traffic**
 
@@ -309,31 +309,31 @@ The objective is to create a new **Inbound Rule** to block all incoming traffic 
 
 | Step | Action/Configuration | Detail |
 | :--- | :--- | :--- |
-| **2.1 Rule Type** | [cite\_start]Select **Port**. [cite: 128] | The rule will control connections for a TCP or UDP port. |
-| **2.2 Protocol and Ports** | Select **TCP** and choose **Specific local ports**. [cite\_start]Enter `23`. [cite: 128] | Port 23 is the standard port for the Telnet service. |
-| **2.3 Action** | [cite\_start]Select **Block the connection**. [cite: 128] | This specifies the firewall's action when traffic matches the rule. |
-| **2.4 Profile** | [cite\_start]Select **Domain**, **Private**, and **Public** profiles. [cite: 128] | This ensures the rule applies regardless of the network environment (e.g., home, corporate, public Wi-Fi). |
-| **2.5 Name** | [cite\_start]Assign a descriptive name, such as **`Block_Telnet_23`**. [cite: 128] | [cite\_start]The new rule is now active in the Inbound Rules list. [cite: 128] |
+| **2.1 Rule Type** | Select **Port**. [cite: 128] | The rule will control connections for a TCP or UDP port. |
+| **2.2 Protocol and Ports** | Select **TCP** and choose **Specific local ports**. Enter `23`. [cite: 128] | Port 23 is the standard port for the Telnet service. |
+| **2.3 Action** | Select **Block the connection**. [cite: 128] | This specifies the firewall's action when traffic matches the rule. |
+| **2.4 Profile** | Select **Domain**, **Private**, and **Public** profiles. [cite: 128] | This ensures the rule applies regardless of the network environment (e.g., home, corporate, public Wi-Fi). |
+| **2.5 Name** | Assign a descriptive name, such as **`Block_Telnet_23`**. [cite: 128] | The new rule is now active in the Inbound Rules list. [cite: 128] |
 
 ### **3. Testing the Firewall Rule**
 
 The rule is tested by attempting to connect to the blocked port (Port 23) using the Telnet client.
 
-1.  [cite\_start]**Enable Telnet Client** (if not already installed): Navigate to **Control Panel** → **Programs** → **Turn Windows features on or off**, and enable **Telnet Client**. [cite: 131]
+1.  **Enable Telnet Client** (if not already installed): Navigate to **Control Panel** → **Programs** → **Turn Windows features on or off**, and enable **Telnet Client**. [cite: 131]
 2.  **Run the Test Command** from the Command Prompt:
     ```bash
     telnet [host ip] 23
     ```
-    [cite\_start]*Example:* `telnet 192.168.1.39 23` [cite: 132]
-3.  [cite\_start]**Observation:** The connection attempt fails with a **"Connect failed"** message. [cite: 132] [cite\_start]This confirms the new firewall rule successfully intercepted and blocked the inbound connection attempt to Port 23. [cite: 132]
+    *Example:* `telnet 192.168.1.39 23` [cite: 132]
+3.  **Observation:** The connection attempt fails with a **"Connect failed"** message. [cite: 132] This confirms the new firewall rule successfully intercepted and blocked the inbound connection attempt to Port 23. [cite: 132]
 
 ### **4. Summary of Firewall Functionality**
 
-[cite\_start]A firewall acts as a security guard for the computer, determining whether to **allow or block traffic** based on defined rules. [cite: 134, 135]
+A firewall acts as a security guard for the computer, determining whether to **allow or block traffic** based on defined rules. [cite: 134, 135]
 
-  * [cite\_start]**Rule Mechanism:** Rules are based on parameters like port numbers, protocols (TCP/UDP), IP addresses, or applications. [cite: 138]
-  * **Action:** If traffic matches a **Block** rule, the traffic is dropped. [cite\_start]If the traffic is **allowed**, it passes. [cite: 140, 141]
-  * [cite\_start]**Test Outcome:** Blocking port **23** stopped Telnet connections, proving the firewall filters unwanted access while allowing other safe traffic. [cite: 142]
+  * **Rule Mechanism:** Rules are based on parameters like port numbers, protocols (TCP/UDP), IP addresses, or applications. [cite: 138]
+  * **Action:** If traffic matches a **Block** rule, the traffic is dropped. If the traffic is **allowed**, it passes. [cite: 140, 141]
+  * **Test Outcome:** Blocking port **23** stopped Telnet connections, proving the firewall filters unwanted access while allowing other safe traffic. [cite: 142]
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Task 5: Capture and Analyze Network Traffic Using Wireshark
@@ -370,31 +370,31 @@ This task focuses on using **Wireshark** to capture and analyze live network pac
 2.  **Start the Capture** by clicking the fin icon or selecting **Capture \> Start**.
 3.  **Generate Test Traffic:** While Wireshark is running, perform actions like:
       * Browsing a website (to generate DNS, TCP, HTTP/TLS traffic).
-      * [cite\_start]Executing a `ping` command to a local or remote server to generate ICMP traffic[cite: 147].
+      * Executing a `ping` command to a local or remote server to generate ICMP traffic[cite: 147].
 4.  **Stop the Capture** after a few moments (e.g., **Capture \> Stop**).
 
 ### **2. Generate and Capture ICMP Traffic**
 
-[cite\_start]The `ping` command is used to generate specific ICMP traffic to a known host (e.g., a local campus server at `10.0.0.39`)[cite: 147].
+The `ping` command is used to generate specific ICMP traffic to a known host (e.g., a local campus server at `10.0.0.39`)[cite: 147].
 
 1.  **Open** the Command Prompt.
 2.  **Execute** the command:
     ```bash
     ping 10.0.0.39
     ```
-3.  [cite\_start]**Verify** the output shows successful replies (0% loss) and approximate round trip times[cite: 147].
+3.  **Verify** the output shows successful replies (0% loss) and approximate round trip times[cite: 147].
 
 ### **3. Filter and Analyze Protocols**
 
-[cite\_start]Use the Wireshark filter bar at the top to isolate different protocols in the captured file (`task5 packet capture.pcapng`)[cite: 148].
+Use the Wireshark filter bar at the top to isolate different protocols in the captured file (`task5 packet capture.pcapng`)[cite: 148].
 
 | Protocol | Filter Used | Key Observation |
 | :--- | :--- | :--- |
-| [cite\_start]**DNS** [cite: 150] | `dns` | [cite\_start]Shows standard **DNS queries and responses** between the system (`192.168.1.39`) and DNS servers (e.g., `10.0.0.41`)[cite: 150]. |
-| [cite\_start]**HTTP** [cite: 149] | `http` | [cite\_start]Displays **HTTP GET and response packets**, often mixed with PKIX-CRL traffic[cite: 149]. |
-| [cite\_start]**TCP** [cite: 151] | `tcp` | [cite\_start]Reveals the underlying **TCP segments**, including the 3-way handshake process (SYN, SYN-ACK, ACK), and protocols riding over TCP like TLSv1.2[cite: 163, 151]. |
-| [cite\_start]**ICMP** [cite: 153] | `icmp` | [cite\_start]Isolates the **Echo Request** and **Echo Reply** packets generated by the `ping` command[cite: 176, 177, 153]. |
-| [cite\_start]**SMB** [cite: 154] | `smb` | [cite\_start]Shows **Server Message Block** traffic, often indicating local Windows file-sharing or network services on port 445[cite: 173, 174]. |
+| **DNS** [cite: 150] | `dns` | Shows standard **DNS queries and responses** between the system (`192.168.1.39`) and DNS servers (e.g., `10.0.0.41`)[cite: 150]. |
+| **HTTP** [cite: 149] | `http` | Displays **HTTP GET and response packets**, often mixed with PKIX-CRL traffic[cite: 149]. |
+| **TCP** [cite: 151] | `tcp` | Reveals the underlying **TCP segments**, including the 3-way handshake process (SYN, SYN-ACK, ACK), and protocols riding over TCP like TLSv1.2[cite: 163, 151]. |
+| **ICMP** [cite: 153] | `icmp` | Isolates the **Echo Request** and **Echo Reply** packets generated by the `ping` command[cite: 176, 177, 153]. |
+| **SMB** [cite: 154] | `smb` | Shows **Server Message Block** traffic, often indicating local Windows file-sharing or network services on port 445[cite: 173, 174]. |
 
 -----
 
@@ -402,9 +402,9 @@ This task focuses on using **Wireshark** to capture and analyze live network pac
 
 Analysis of the captured traffic file revealed several common network protocols:
 
-  * [cite\_start]**DNS (Domain Name System):** Identified as several **DNS queries and responses** that translate domain names to IP addresses[cite: 158, 159, 160]. [cite\_start]This traffic primarily uses the **UDP** protocol on **Port 53**[cite: 161].
-  * [cite\_start]**TCP (Transmission Control Protocol):** Observed the standard **TCP 3-way handshake** before data transfer[cite: 163]. [cite\_start]TCP segments were seen carrying higher-level data protocols like HTTP[cite: 164].
-      * [cite\_start]*Example Detail:* Handshake packets with flags **SYN, SYN-ACK, ACK** were present[cite: 180].
-  * [cite\_start]**HTTP (Hypertext Transfer Protocol):** Captured **HTTP GET and response packets** (e.g., a request to fetch a webpage)[cite: 167, 168].
-  * [cite\_start]**ICMP (Internet Control Message Protocol):** Confirmed the `ping` activity by observing **echo request and echo reply** packets between the system and other hosts[cite: 176, 177, 182].
-  * [cite\_start]**SMB (Server Message Block):** Detected traffic on **TCP Port 445**, indicating file-sharing or background Windows network services[cite: 172, 173].
+  * **DNS (Domain Name System):** Identified as several **DNS queries and responses** that translate domain names to IP addresses[cite: 158, 159, 160]. This traffic primarily uses the **UDP** protocol on **Port 53**[cite: 161].
+  * **TCP (Transmission Control Protocol):** Observed the standard **TCP 3-way handshake** before data transfer[cite: 163]. TCP segments were seen carrying higher-level data protocols like HTTP[cite: 164].
+      * *Example Detail:* Handshake packets with flags **SYN, SYN-ACK, ACK** were present[cite: 180].
+  * **HTTP (Hypertext Transfer Protocol):** Captured **HTTP GET and response packets** (e.g., a request to fetch a webpage)[cite: 167, 168].
+  * **ICMP (Internet Control Message Protocol):** Confirmed the `ping` activity by observing **echo request and echo reply** packets between the system and other hosts[cite: 176, 177, 182].
+  * **SMB (Server Message Block):** Detected traffic on **TCP Port 445**, indicating file-sharing or background Windows network services[cite: 172, 173].
