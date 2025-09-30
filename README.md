@@ -408,3 +408,68 @@ Analysis of the captured traffic file revealed several common network protocols:
   * **HTTP (Hypertext Transfer Protocol):** Captured **HTTP GET and response packets** (e.g., a request to fetch a webpage)[cite: 167, 168].
   * **ICMP (Internet Control Message Protocol):** Confirmed the `ping` activity by observing **echo request and echo reply** packets between the system and other hosts[cite: 176, 177, 182].
   * **SMB (Server Message Block):** Detected traffic on **TCP Port 445**, indicating file-sharing or background Windows network services[cite: 172, 173].
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Task 6: Creating a Strong Password and Evaluating Its Strength
+
+This task focuses on the principles of **strong password creation** and uses an online tool to demonstrate how length and complexity directly impact security against common cracking methods.
+
+### **Objective**
+
+* Understand the factors that make a password strong.
+* Test password strength using online tools.
+
+### **Tools Used**
+
+* [cite_start]**Online free password strength checker** (e.g., `passwordmeter.com` [cite: 3])
+
+### **Key Concepts**
+
+| Concept | Description |
+| :--- | :--- |
+| **Password Complexity** | [cite_start]The inclusion of different character sets: uppercase, lowercase, numbers, and symbols[cite: 32]. |
+| **Brute Force Attack** | [cite_start]An attack that tries every possible combination until the correct password is found[cite: 37]. |
+| **Dictionary Attack** | [cite_start]An attack that uses a list of common words or leaked passwords[cite: 38]. |
+| **Credential Stuffing** | [cite_start]Using leaked credentials from one service to try logging into another account[cite: 39]. |
+
+---
+
+## **Step-by-Step Implementation**
+
+### **1. Creating and Testing Passwords**
+
+Multiple passwords were created with increasing complexity and tested using a password strength checker to observe the score and complexity rating.
+
+| Password | Score (%) | Strength | Primary Characteristics |
+| :--- | :--- | :--- | :--- |
+| [cite_start]`Password` [cite: 17] | [cite_start]26% [cite: 18] | [cite_start]**Weak** [cite: 18] | [cite_start]Too short, only lowercase + uppercase[cite: 28]. |
+| [cite_start]`hello12345` [cite: 19] | [cite_start]51% [cite: 20] | [cite_start]**Good** [cite: 20] | [cite_start]Longer length, includes lowercase and numbers[cite: 20]. |
+| [cite_start]`hello@1234` [cite: 21] | [cite_start]66% [cite: 22] | [cite_start]**Strong** [cite: 22] | [cite_start]Good length, uses lowercase, numbers, and a symbol[cite: 22]. |
+| [cite_start]`Hello@123` [cite: 23] | [cite_start]89% [cite: 24] | [cite_start]**Very Strong** [cite: 24] | [cite_start]Incorporates uppercase, lowercase, number, and symbol[cite: 24, 28]. |
+| [cite_start]`Hell0@Guys#Cyb3r!$` [cite: 25] | [cite_start]100% [cite: 26] | [cite_start]**Very Strong** [cite: 26] | [cite_start]Long, random, and diverse, making it very difficult to crack[cite: 10, 28]. |
+
+### **2. Identifying Best Practices**
+
+Based on the testing, several best practices were identified for creating passwords that maximize security:
+
+* [cite_start]**Length:** Passwords should be at least **12–16 characters long**[cite: 31].
+* [cite_start]**Diversity:** Use a combination of **uppercase and lowercase letters, numbers, and symbols**[cite: 32].
+* [cite_start]**Unpredictability:** **Avoid dictionary words**, names, or birthdates[cite: 33].
+* [cite_start]**Uniqueness:** Use a **unique password for every single account**[cite: 34].
+* [cite_start]**Management:** Employ a **password manager** to securely generate and store complex passwords[cite: 35].
+
+### **3. Research on Common Password Attacks**
+
+Strong password habits help mitigate risk from common password attacks:
+
+| Attack Type | Description |
+| :--- | :--- |
+| [cite_start]**Brute Force Attack** [cite: 37] | [cite_start]Tries every possible character combination until the correct password is found[cite: 37]. |
+| [cite_start]**Dictionary Attack** [cite: 38] | [cite_start]Uses lists of common words, phrases, and previously leaked passwords[cite: 38]. |
+| [cite_start]**Credential Stuffing** [cite: 39] | [cite_start]Uses username/password combinations stolen in a breach on one site to attempt login on others[cite: 39]. |
+| [cite_start]**Social Engineering** [cite: 40] | [cite_start]Involves tricking the user (e.g., through phishing) into willingly revealing their password[cite: 40]. |
+
+### **4. Conclusion**
+
+[cite_start]Password complexity directly impacts security[cite: 42]. [cite_start]While simple passwords (like `hello123`) can be **cracked in seconds** [cite: 43][cite_start], long, complex passwords (like `Hell0@Guys#Cyb3r!$`) may take **centuries** to crack with brute force methods[cite: 44]. [cite_start]Adopting strong password practices significantly reduces the risk of hacking and improves overall cybersecurity hygiene[cite: 45].
